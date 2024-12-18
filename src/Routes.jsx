@@ -5,6 +5,7 @@ import { NotFound } from "@/pages/NotFound/NotFound";
 import { Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from "./components/molecules/ProtectedRoutes/ProtectedRoutes";
 import { Home } from "./pages/Home/Home";
+import { WorkspaceLayout } from "./pages/Workspace/Layout";
 
 export const AppRoutes=()=>{
     return(
@@ -12,6 +13,7 @@ export const AppRoutes=()=>{
        <Route path='/auth/signup'element={<Auth><SignupContainer/></Auth>}/>
        <Route path='/auth/signin'element={<Auth><SignInContainer/></Auth>}/>
        <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
+       <Route path='/workspaces/:workspaceId' element={<ProtectedRoute><WorkspaceLayout>Workspace</WorkspaceLayout></ProtectedRoute>}/>
        <Route path='/*' element ={<NotFound/>}/>
       </Routes>
     );
