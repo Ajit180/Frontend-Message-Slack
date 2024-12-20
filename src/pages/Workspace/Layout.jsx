@@ -1,5 +1,6 @@
 import { WorkspaceNavbar } from "@/components/organisms/Workspace/WorkspaceNavbar";
 import { WorkspaceSidebar } from "@/components/organisms/Workspace/WorkspaceSidebar";
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 
 export const WorkspaceLayout =({children})=>{
     return(
@@ -7,7 +8,26 @@ export const WorkspaceLayout =({children})=>{
             <WorkspaceNavbar/>
             <div className="flex h-[calc(100vh-40px)]">
                <WorkspaceSidebar/>
-               {children}
+               <ResizablePanelGroup direction="horizontal" autoSaveId={'workspace-resize'}> 
+                                                              {/**here i did not give '' in the 
+                                                               * workspace-resize i got error
+                                                               */}
+                   <ResizablePanel
+                     defaultSize={20} 
+                     minSize={11}
+                     className="bg-slack-medium"
+                   >
+                     <div>
+                        SideBar
+                     </div>
+                   </ResizablePanel>
+                   <ResizableHandle withHandle/>
+                   <ResizablePanel 
+                     minSize={20}
+                   >
+                     {children}
+                   </ResizablePanel>
+               </ResizablePanelGroup>
             </div>
         </div>
     );
