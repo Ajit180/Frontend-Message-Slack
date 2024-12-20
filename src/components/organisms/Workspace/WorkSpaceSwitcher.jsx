@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { useFetchWorkspace } from "@/hooks/apis/workspaces/useFetchWorkspace";
 import { useGetWorkspaceById } from "@/hooks/apis/workspaces/useGetWorkspaceById";
 import { Loader, Loader2 } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom"
@@ -13,6 +14,8 @@ import { useNavigate, useParams } from "react-router-dom"
     const { workspaceId } = useParams();
 
     const {isFetching,workspace}=useGetWorkspaceById(workspaceId);
+
+    const {workspaces,isFetching:isFetchingWorkspace}=useFetchWorkspace();
 
 
     return(
@@ -28,6 +31,36 @@ import { useNavigate, useParams } from "react-router-dom"
                     :workspace?.name.charAt(0).toUpperCase()}
                 </Button>
              </DropdownMenuTrigger>
+             <DropdownMenuContent>
+               <DropdownMenuItem>
+                  {workspace?.name}
+                  <span className="text-xs text-muted-foreground">
+                     (Active Workspace)
+                  </span>
+               </DropdownMenuItem>
+               {isFetchingWorkspace?(<Loader className="size-5 animate-spin"/>):
+               workspaces?.map((workspace)=>{
+                  if(workspace._id===workspaceId){
+                     return null;
+                  }
+                  return(
+                     <DropdownMenuItem
+                       className="cursor-pointer flex-col justify-center items-start"
+                       onClick={()=>navigate(`/workspaces/${workspace._id}`)}
+                       key={workspace._id}
+                     >
+                      <p
+                         className="truncate"
+                      >
+                        {workspace?.name}
+                      </p>
+
+                     </DropdownMenuItem>
+                  )
+               })
+
+               };
+             </DropdownMenuContent>
           </DropdownMenu>
         </>
     )
