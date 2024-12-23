@@ -3,10 +3,13 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { useAuth } from "@/hooks/context/useAuth";
 import { useWorkPreferenceModal } from "@/hooks/context/useWorkPreferenceModal";
 import { ChevronDown, ChevronDownIcon, ListFilter, ListFilterIcon, SquarePenIcon } from "lucide-react";
+import { useEffect } from "react";
 
 export const WorkspacePanelHeader=({workspace})=>{
 
       console.log('Workspace is ',workspace);
+
+      const {setWorkspace}=useWorkPreferenceModal();
 
       const workspacememebers = workspace?.members;
 
@@ -22,6 +25,10 @@ export const WorkspacePanelHeader=({workspace})=>{
 
 
       const {setInitialValue,setOpenPreference}= useWorkPreferenceModal();
+
+      useEffect(()=>{
+        setWorkspace(workspace)
+      },[]);
             
 
     return(
