@@ -3,7 +3,6 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { useAuth } from "@/hooks/context/useAuth";
 import { useWorkPreferenceModal } from "@/hooks/context/useWorkPreferenceModal";
 import { ChevronDown, ChevronDownIcon, ListFilter, ListFilterIcon, SquarePenIcon } from "lucide-react";
-import { useEffect } from "react";
 
 export const WorkspacePanelHeader=({workspace})=>{
 
@@ -22,18 +21,8 @@ export const WorkspacePanelHeader=({workspace})=>{
       console.log(isLoggedInUserAdminWorkspace);
 
 
-      const {openPreference,setOpenPreference}= useWorkPreferenceModal();
-
-
-      useEffect(()=>{
-
-        console.log('openPreference is',openPreference);
-        
-
-      },[openPreference]);
-      
-      
-      
+      const {setInitialValue,setOpenPreference}= useWorkPreferenceModal();
+            
 
     return(
         <div   className='flex items-center justify-between px-4 h-[50px] gap-0.5'>
@@ -69,7 +58,11 @@ export const WorkspacePanelHeader=({workspace})=>{
                      {isLoggedInUserAdminWorkspace && (
                         <>
                            <DropdownMenuItem  className="cursor-pointer py-2"
-                             onClick={()=>setOpenPreference(true)}
+                             onClick={()=>{
+                                setOpenPreference(true);
+                                setInitialValue(workspace?.name);
+                             }
+                             }
                            >
                                  Preferences
                            </DropdownMenuItem>
