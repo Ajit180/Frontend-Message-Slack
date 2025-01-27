@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: ["class"],
-    content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+    darkMode: ['class'],
+    content: ['./index.html', './src/**/*.{ts,tsx,js,jsx}'],
   theme: {
   	extend: {
   		borderRadius: {
@@ -15,10 +12,10 @@ export default {
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
-			slack:{
-				DEFAULT:'#5c3B58',
-				dark:'#481349',
-				medium:'#5E2C5F'
+			slack: {
+				DEFAULT: '#5c3B58',
+				dark: '#481349',
+				medium: '#5E2C5F'
 			},
   			card: {
   				DEFAULT: 'hsl(var(--card))',
@@ -61,6 +58,7 @@ export default {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
-}
+  // eslint-disable-next-line no-undef
+  plugins: [require('tailwindcss-animate')],
+};
 
