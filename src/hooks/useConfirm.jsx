@@ -1,34 +1,34 @@
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { useState } from "react"
+import { useState } from 'react';
 
-export const useConfirm=({
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+
+export const useConfirm = ({
     title,
     message
-})=>{
+}) => {
 
-    const [promise,setPromise]=useState(null);
+    const [promise, setPromise] = useState(null);
 
-    async function confirmation(){
+    async function confirmation() {
         console.log('Confirmation triggered');
-        return new Promise((resolve)=>{
+        return new Promise((resolve) => {
             setPromise({resolve});
-        });   
+        });
     }
 
-
-    const handleClose=()=>{
+    const handleClose = () => {
         setPromise(null);
-    }
+    };
 
-    const handleConfrim=()=>{
+    const handleConfirm = () => {
         promise?.resolve(true);
         handleClose();
     };
 
-    const ConfirmDialog =()=>{
-        return(
-            <Dialog open={promise !== null} onOpenChange={handleClose} >
+    const ConfirmDialog = () => {
+        return (
+            <Dialog open={promise !== null} onOpenChange={handleClose}>
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>
@@ -38,15 +38,16 @@ export const useConfirm=({
                             {message}
                         </DialogDescription>
                     </DialogHeader>
+
                     <DialogFooter>
                         <Button
-                          onClick={handleClose}
-                          variant ="secondary"
+                            onClick={handleClose}
+                            variant="secondary"
                         >
                             Cancel
                         </Button>
                         <Button
-                        onClick={handleConfrim}
+                            onClick={handleConfirm}
                         >
                             Confirm
                         </Button>
@@ -56,6 +57,6 @@ export const useConfirm=({
         );
     };
 
-    return{ConfirmDialog,confirmation};
+    return {ConfirmDialog, confirmation};
 
 };

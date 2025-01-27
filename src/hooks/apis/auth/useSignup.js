@@ -1,40 +1,35 @@
-import { useMutation } from "@tanstack/react-query";
-import { signUpRequest } from "@/apis/auth";
-import { useToast } from "@/hooks/use-toast";
+import { useMutation } from '@tanstack/react-query';
 
+import { signUpRequest } from '@/apis/auth';
+import { useToast } from '@/hooks/use-toast';
 
-
-export const useSignUp=()=>{
-
+export const useSignup = () => {
     const { toast } = useToast();
-    const {isPending,isSuccess,error,mutateAsync:signupMutation}=useMutation({
-        mutationFn:signUpRequest,
-        onSuccess:(data)=>{
-            console.log('Successfully Sign Up',data);
-            
+    const { isPending, isSuccess, error, mutateAsync: signupMutation } = useMutation({
+        mutationFn: signUpRequest,
+        onSuccess: (data) => {
+            console.log('Scuccessfuilly signed up', data);
             toast({
-                title:'Successfully Sign Up',
-                message:'You will be redirected to login page within few seconds',
-                type: 'Success'
-
-            })
-            
+                title: 'Successfully signed up',
+                message: 'You will be redirected to the login page in a few seconds',
+                type: 'success'
+            });
         },
-        onError:(error)=>{
-            console.log('Failed to Sign Up',error);
+        onError: (error) => {
+            console.error('Failed to sign up', error);
             toast({
-                title:'Failed to Sign Up',
-                message:error.message,
-                type:'error',
+                title: 'Failed to sign up',
+                message: error.message,
+                type: 'error',
                 variant: 'destructive'
-            })
+            });
         }
     });
 
-    return{
+    return {
         isPending,
         isSuccess,
         error,
         signupMutation
     };
-}
+};

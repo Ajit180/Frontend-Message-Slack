@@ -1,21 +1,20 @@
-import { fetchworkspaceDetailsRequest } from "@/apis/workspaces"
-import { useAuth } from "@/hooks/context/useAuth"
-import { useQuery } from "@tanstack/react-query"
+import { useQuery } from '@tanstack/react-query';
 
-export const useGetWorkspaceById=(id)=>{
+import { fetchWorkspaceDetailsRequest } from '@/apis/workspaces';
+import { useAuth } from '@/hooks/context/useAuth';
 
-    const {auth} =useAuth();
-
-    const {isFetching,isSuccess,error,data:workspace}=useQuery({
-        queryFn:()=>fetchworkspaceDetailsRequest({workspaceId:id,token:auth?.token}),
-        queryKey:[`getWorkspaceById ${id}`],
-        staleTime:10000
+export const useGetWorkspaceById = (id) => {
+    const { auth } = useAuth();
+    const { isFetching, isSuccess, error, data: workspace } = useQuery({
+        queryFn: () => fetchWorkspaceDetailsRequest({ workspaceId: id, token: auth?.token }),
+        queryKey: [`fetchWorkspaceById-${id}`],
+        staleTime: 10000
     });
 
-    return{
+    return {
         isFetching,
         isSuccess,
         error,
         workspace
-    }
-}
+    };
+};
