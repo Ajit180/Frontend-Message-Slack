@@ -1,13 +1,11 @@
-import { CreateWorkspaceModals } from "@/components/molecules/CreateWorkspaceModals/CreateWorkspaceModals";
-import { WorkspacePanel } from "../Workspace/WorkspacePanels";
-import WorkspacePreferenceModalContext from "@/context/WorkspreferenceModals";
-import { WorkSpacePreferenceModals } from "@/components/molecules/Workspace/WorkspacePreferanceModals";
+import { CreateWorkspaceModal } from '@/components/molecules/CreateWorkspaceModal/CreateWorkspaceModal';
+import { WorkspacePreferencesModal } from '@/components/molecules/Workspace/WorkspacePreferencesModal';
 
-export const Modals =()=>{
-    return(
+export const Modals = () => {
+    return (
         <>
-           <CreateWorkspaceModals/>
-           <WorkSpacePreferenceModals/>
+            <CreateWorkspaceModal />
+            <WorkspacePreferencesModal />
         </>
     );
-}
+};

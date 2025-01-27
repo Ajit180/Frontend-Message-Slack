@@ -1,40 +1,40 @@
-import { UserButton } from "@/components/atoms/UserButton/UserButton";
-import { SideBarButton } from "@/components/molecules/SideBarButtons/SideBarButton";
-import { BellIcon, HomeIcon, MessageSquareIcon, MoreHorizontalIcon } from "lucide-react";
-import { WorkspaceSwitcher } from "@/components/organisms/Workspace/WorkSpaceSwitcher";
+import { BellIcon, HomeIcon, MessageSquareIcon, MoreHorizontalIcon } from 'lucide-react';
 
-export const WorkspaceSidebar=()=>{
-    return(
-        <aside className="w-[70px] h-full bg-slack-dark flex flex-col 
-        gap-y-4 items-center pt-[10px] pb-[5px]">
+import { UserButton } from '@/components/atoms/UserButton/UserButton';
+import { SidebarButton } from '@/components/molecules/SidebarButton/SidebarButton';
+import { WorkspaceSwitcher } from '@/components/organisms/Workspace/WorkspaceSwitcher';
 
-            <WorkspaceSwitcher/>
+export const WorkspaceSidebar = () => {
+    return (
+        <aside
+            className="w-[70px] h-full bg-slack-dark flex flex-col gap-y-4 items-center pt-[10px] pb-[5px]"
+        >
+            <WorkspaceSwitcher />
 
-            <SideBarButton
-              Icon={HomeIcon}
-              label="Home"
+            <SidebarButton 
+                Icon={HomeIcon}
+                label="Home"
             />
 
-             <SideBarButton
-              Icon={MessageSquareIcon}
-              label="DMs"
+            <SidebarButton
+                Icon={MessageSquareIcon}
+                label="DMs"
             />
 
-            <SideBarButton
-              Icon={BellIcon}
-              label="Notifications"
+            <SidebarButton
+                Icon={BellIcon}
+                label="Notifications"
             />
 
-             <SideBarButton
-              Icon={MoreHorizontalIcon}
-              label="More"
+            <SidebarButton
+                Icon={MoreHorizontalIcon}
+                label="More"
             />
-             
-             <div className="flex flex-col items-center justify-center mt-auto mb-5 gap-y-1">
-                <UserButton/>
-             </div>
 
-
+            <div className='flex flex-col items-center justify-center mt-auto mb-5 gap-y-1'>
+                <UserButton />
+            </div>
+            
         </aside>
     );
-}
+};
