@@ -2,17 +2,14 @@ import { CopyIcon, RefreshCcwIcon } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { useResetJoinCode } from '@/hooks/apis/workspaces/useResetJoinCode';
 import { useToast } from '@/hooks/use-toast';
 
-export const WorkspaceInviteModal = ({ openInviteModal, setOpenInviteModal, workspaceName, joinCode, workspaceId }) => {
+export const WorkspaceInviteModal = ({ openInviteModal, setOpenInviteModal, workspaceName, joinCode }) => {
     
     const { toast } = useToast();
 
-    const { resetJoinCodeMutation } = useResetJoinCode(workspaceId);
-
     async function handleCopy() {
-        const inviteLink = `${joinCode}`;
+        const inviteLink = `${window.location.origin}/join/${joinCode}`;
         await navigator.clipboard.writeText(inviteLink);
         toast({
             title: 'Link copied to clipboard',
@@ -20,17 +17,7 @@ export const WorkspaceInviteModal = ({ openInviteModal, setOpenInviteModal, work
         });
     }
 
-    async function handleResetCode() {
-        try {
-            await resetJoinCodeMutation();
-        toast({
-            title: 'Join code reset successfully',
-            type: 'success'
-        });
-        } catch(error) {
-           console.log('Error in resetting join code', error); 
-        }
-    }
+    async function handleResetCode() {}
 
     return (
         <Dialog open={openInviteModal} onOpenChange={setOpenInviteModal}>
@@ -51,19 +38,9 @@ export const WorkspaceInviteModal = ({ openInviteModal, setOpenInviteModal, work
                         {joinCode}
                     </p>
                     <Button size="sm" variant="ghost" onClick={handleCopy}>
-                        Copy Code
+                        Copy Link
                         <CopyIcon className='size-4 ml-2' />
                     </Button>
-
-                    {/* Link to redirect the user in a new tab to the join page */}
-                    <a
-                        href={`/workspaces/join/${workspaceId}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className='text-blue-500'
-                    >
-                        Redirect to join page
-                    </a>
                 </div>
                 <div
                     className='flex items-center justify-center w-full'
