@@ -1,4 +1,3 @@
-import { MessageImageThumbnail } from '@/components/atoms/MessageImageThumbnail/MessageImageThumbnail';
 import { MessageRenderer } from '@/components/atoms/MessageRenderer/MessageRenderer';
 import { Avatar, AvatarFallback,AvatarImage } from '@/components/ui/avatar';
 
@@ -6,8 +5,7 @@ export const Message = ({
     authorImage,
     authorName,
     createdAt,
-    body,
-    image
+    body
 }) => {
     return (
         <div
@@ -42,13 +40,12 @@ export const Message = ({
                         <button
                             className='text-xs text-muted-foreground hover:underline'
                         >
-                            {createdAt || 'Just now'}
+                            {createdAt}
                         </button>
                     </div>
 
                     <MessageRenderer value={body} />
                     {/* Any images if there are */}
-                    {image && <MessageImageThumbnail url={image} />}
 
                 </div>
 
