@@ -5,7 +5,6 @@ const ChannelMessages = createContext();
 export const ChannelMessagesProvider = ({ children }) => {
 
     const [messageList, setMessageList] = useState([]);
-   
 
     return (
         <ChannelMessages.Provider value={{ messageList, setMessageList }}>
