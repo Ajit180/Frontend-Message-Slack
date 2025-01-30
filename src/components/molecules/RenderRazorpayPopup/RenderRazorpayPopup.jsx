@@ -54,7 +54,7 @@ export const RenderRazorpayPopup = ({
             key: keyId,
             amount,
             currency,
-            name: "Sanket Singh", // name of the company
+            name: "Ajit Yadav", // name of the company
             description: "Test Transaction",
             order_id: orderId,
             handler: async (response) => {

@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query"
 
 export const useCaptureOrder = () => {
     const { auth } = useAuth();
+    
     const {
         mutateAsync: captureOrderMutation,
         error,
