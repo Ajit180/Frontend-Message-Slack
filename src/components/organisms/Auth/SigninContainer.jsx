@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useSignin } from '@/hooks/apis/auth/useSignin';
 
-import { SigninCard } from './SigninCard';
+import { SigninCard } from './SignInCard';
 
 export const SigninContainer = () => {
 
