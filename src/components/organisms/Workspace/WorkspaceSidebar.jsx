@@ -2,7 +2,7 @@ import { BellIcon, HomeIcon, MessageSquareIcon, MoreHorizontalIcon } from 'lucid
 
 import { UserButton } from '@/components/atoms/UserButton/UserButton';
 import { SidebarButton } from '@/components/molecules/SidebarButton/SidebarButton';
-import { WorkspaceSwitcher } from '@/components/organisms/Workspace/WorkspaceSwitcher';
+import { WorkspaceSwitcher } from '@/components/organisms/Workspace/WorkSpaceSwitcher';
 
 export const WorkspaceSidebar = () => {
     return (
