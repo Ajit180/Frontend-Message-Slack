@@ -14,7 +14,8 @@ export const SigninCard = ({
     validationError,
     error,
     isSuccess,
-    isPending
+    isPending,
+    fillGuestCrediential
 }) => {
 
     const navigate = useNavigate();
@@ -75,6 +76,9 @@ export const SigninCard = ({
                     <Button className="w-full" disabled={isPending} size="lg" type="submit">    
                         Continue
                     </Button>
+                    <Button type='button' onClick={fillGuestCrediential} className="w-full" size="lg" disabled={isPending}>
+                        Gess Credential
+                    </Button>
                 </form>
 
                 <Separator className='my-5' />
@@ -82,7 +86,7 @@ export const SigninCard = ({
                 <p
                     className='text-s text-muted-foreground mt-4'
                 >
-                    Donot have an account ? {' '}
+                    Do not have an account ? {' '}
                     <span 
                         className='text-sky-600 hover:underline cursor-pointer'
                         onClick={() => navigate('/auth/signup')}

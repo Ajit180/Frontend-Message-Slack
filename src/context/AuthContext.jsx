@@ -10,6 +10,9 @@ export const AuthContextProvider = ({ children }) => {
         isLoading: true
     });
 
+    // Where Do user and token Come From?
+    //They are stored in localStorage when the user logs in.
+
     useEffect(() => {
         const user = localStorage.getItem('user');
         const token = localStorage.getItem('token');

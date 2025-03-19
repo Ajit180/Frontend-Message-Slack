@@ -48,9 +48,9 @@ export const WorkspaceNavbar = () => {
                     size='sm'
                     className='bg-accent/25 hover:bg-accent/15 w-full justify-start h-7 px-2'
                 >
-                    <SearchIcon className='size-5 text-white mr-2' />
+                    <SearchIcon className='size-5 text-white mr-2'/>
                     <span className='text-white text-xs'>
-                        Search {workspace?.name || 'Workspace'} 
+                        Search in {workspace?.name || 'Workspace'} 
                     </span>
                 </Button>
             </div>

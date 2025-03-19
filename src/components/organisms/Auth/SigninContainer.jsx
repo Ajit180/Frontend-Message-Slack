@@ -11,6 +11,8 @@ export const SigninContainer = () => {
 
     const [validationError, setValidationError] = useState(null);
 
+    
+
     const [signinForm, setSigninForm] = useState({
         email: '',
         password: ''
@@ -33,6 +35,13 @@ export const SigninContainer = () => {
         });
     };
 
+    const fillGuestCrediential = ()=>{
+        setSigninForm({
+            email:'guest@admin.com',
+            password:'123456'
+        })
+    };
+
     useEffect(() => {
         if(isSuccess) {
             setTimeout(() => {
@@ -51,6 +60,8 @@ export const SigninContainer = () => {
             error={error}
             isSuccess={isSuccess}
             isPending={isPending}
+            fillGuestCrediential={fillGuestCrediential}
+            
         />
     );
 };
